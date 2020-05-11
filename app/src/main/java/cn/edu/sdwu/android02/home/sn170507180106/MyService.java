@@ -1,7 +1,5 @@
 package cn.edu.sdwu.android02.home.sn170507180106;
 
-
-import android.app.MediaRouteActionProvider;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -15,18 +13,16 @@ public class MyService extends Service {
     }
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         //初始化播放器
         mediaPlayer=MediaPlayer.create(this,R.raw.wav);
-        mediaPlayer.setLooping(true);
+        mediaPlayer.setLooping(true);//循环播放
         Log.i(MyService.class.toString(),"onCreate");
-
     }
 
     @Override
-    public int onStartCommand(Intent intent,int flags, int startId) {
-        //主要业务写在本方法中
+    public int onStartCommand(Intent intent, int flags, int startId) {
         mediaPlayer.start();
         Log.i(MyService.class.toString(),"onStartCommand");
         return super.onStartCommand(intent, flags, startId);

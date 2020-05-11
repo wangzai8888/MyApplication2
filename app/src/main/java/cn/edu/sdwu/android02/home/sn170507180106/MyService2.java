@@ -1,6 +1,5 @@
 package cn.edu.sdwu.android02.home.sn170507180106;
 
-import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -12,14 +11,17 @@ import java.util.Random;
 public class MyService2 extends Service {
     private Random random;
     private MyBinder myBinder;
-    public MyService2(){
+
+    public MyService2() {
     }
+
     @Override
     public void onCreate() {
         super.onCreate();
         random=new Random();
         myBinder=new MyBinder();
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         //返回值，会返回给调用者，以后调用者与服务进行交互，都会使用此返回值
@@ -47,8 +49,9 @@ public class MyService2 extends Service {
         }
     }
 
-    //实际与调用者进行交付的方法
-    public int genRandom(){
+    //实际与调用者进行交互的方法
+    public int getRandom(){
         return random.nextInt();
     }
+
 }
